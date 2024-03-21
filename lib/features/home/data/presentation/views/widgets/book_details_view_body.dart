@@ -1,3 +1,4 @@
+import 'package:bookly_app/features/home/data/presentation/views/widgets/custombookdetailsappbar.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
@@ -5,6 +6,13 @@ class BookDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 18),
+      child: Column(
+        children: [
+          CustomBookDetailsAppBar(),
+        ],
+      ),
+    );
   }
 }
