@@ -17,4 +17,9 @@ class Styles {
     fontWeight: FontWeight.w500,
     fontSize: 16,
   );
+  static const textStyle30 = TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: 30,
+    fontFamily: "GTSectraFineRegular",
+  );
 }
