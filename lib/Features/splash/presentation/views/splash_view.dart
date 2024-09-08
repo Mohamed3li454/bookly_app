@@ -1,4 +1,4 @@
-import 'package:bookly_app/core/utils/assets.dart';
+import 'package:bookly_app/Features/splash/presentation/views/widgets/splash_view_body.dart';
 import 'package:flutter/material.dart';
 
 class SplashView extends StatelessWidget {
@@ -8,22 +8,6 @@ class SplashView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: SplashViewBody(),
-    );
-  }
-}
-
-class SplashViewBody extends StatelessWidget {
-  const SplashViewBody({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Image.asset(AssetsDate.logo),
-        const Center(child: Text("Read free books"))
-      ],
     );
   }
 }
