@@ -1,10 +1,7 @@
-import 'package:bookly_app/Features/home/presentation/views/home_view.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
-
-import 'package:get/get_core/get_core.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:go_router/go_router.dart';
 
 class ThrobAnimation extends StatefulWidget {
   const ThrobAnimation({super.key});
@@ -32,9 +29,8 @@ class _ThrobAnimationState extends State<ThrobAnimation>
   // ignore: non_constant_identifier_names
   void NavigateHome() {
     Future.delayed(const Duration(seconds: 4), () {
-      Get.to(const HomeView(),
-          transition: Transition.fade,
-          duration: const Duration(milliseconds: 250));
+      // ignore: use_build_context_synchronously
+      GoRouter.of(context).push("/HomeView");
     });
   }
 
