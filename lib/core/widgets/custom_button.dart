@@ -18,14 +18,20 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 48,
-      child: TextButton(
-        style: TextButton.styleFrom(
-          backgroundColor: backgroundcolor,
-          shape: RoundedRectangleBorder(
-            borderRadius: borderRadius ?? BorderRadius.circular(12),
+      child: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: WidgetStateProperty.all(backgroundcolor),
+          shape: WidgetStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: borderRadius ?? BorderRadius.circular(12),
+            ),
           ),
+          overlayColor: WidgetStateProperty.all(
+              Colors.grey.withOpacity(0.5)), // splash color
         ),
-        onPressed: () {},
+        onPressed: () {
+          // Add your button's action here
+        },
         child: Text(
           text,
           style: Styles.textStyle18
