@@ -12,7 +12,9 @@ class SimilarBookDetailsListView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => const Padding(
           padding: EdgeInsets.all(4.0),
-          child: FeaturedListViewItem(),
+          child: FeaturedListViewItem(
+            imageUrl: "https://i.sstatic.net/GsDIl.jpg",
+          ),
         ),
       ),
     );

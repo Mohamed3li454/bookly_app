@@ -9,6 +9,7 @@ abstract class Failures {
 class ServerFailure extends Failures {
   ServerFailure({required super.errormassage});
 
+  // ignore: non_constant_identifier_names
   factory ServerFailure.FromDioError(DioException dioerror) {
     switch (dioerror.type) {
       case DioExceptionType.connectionTimeout:

@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) =>
-              FeaturedBooksCubit(getIt.get<HomeRepoImplements>()),
+              FeaturedBooksCubit(getIt.get<HomeRepoImplements>())
+                ..fetchfeaturedbooks(),
         ),
         BlocProvider(
           create: (context) =>

@@ -21,7 +21,7 @@ class HomeViewBody extends StatelessWidget {
               ),
               FeaturedListViewBuilder(),
               Padding(
-                padding: EdgeInsets.only(top: 50),
+                padding: EdgeInsets.only(top: 25),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24),
                   child: Text(
