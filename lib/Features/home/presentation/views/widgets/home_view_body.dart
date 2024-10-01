@@ -25,7 +25,7 @@ class HomeViewBody extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24),
                   child: Text(
-                    "Best Seller",
+                    "Newest Books",
                     style: Styles.textStyle18,
                   ),
                 ),
@@ -36,7 +36,7 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
-        BestSellerListView()
+        NewestBooksListView()
       ],
     );
   }
