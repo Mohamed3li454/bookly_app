@@ -1,3 +1,4 @@
+import 'package:bookly_app/Features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/Features/home/presentation/views/widgets/book_details_action_button.dart';
 import 'package:bookly_app/Features/home/presentation/views/widgets/book_rating_widget.dart';
 import 'package:bookly_app/Features/home/presentation/views/widgets/custom_book_details_appbar.dart';
@@ -7,10 +8,12 @@ import 'package:bookly_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({super.key});
+  const BookDetailsViewBody({super.key, required this.bookmodel});
+  final BookModel bookmodel;
 
   @override
   Widget build(BuildContext context) {
+    int maxAuthorsToShow = 10;
     var width = MediaQuery.of(context).size.width;
     return CustomScrollView(slivers: [
       SliverFillRemaining(
@@ -22,26 +25,49 @@ class BookDetailsViewBody extends StatelessWidget {
               const CustomBookDetailsAppBar(),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: width * 0.2),
-                child: const FeaturedListViewItem(
-                  imageUrl: "https://i.sstatic.net/GsDIl.jpg",
+                child: FeaturedListViewItem(
+                  imageUrl: bookmodel.volumeInfo.imageLinks.thumbnail,
                 ),
               ),
               const SizedBox(
                 height: 43,
               ),
-              const Text(
-                "The Jungle Book",
+              Text(
+                bookmodel.volumeInfo.title!,
                 style: Styles.textStyle30,
+                textAlign: TextAlign.center,
               ),
               const SizedBox(
                 height: 6,
               ),
               Opacity(
                 opacity: 0.7,
-                child: Text(
-                  "Mohamed Ali",
-                  style:
-                      Styles.textStyle18.copyWith(fontStyle: FontStyle.italic),
+                child: Expanded(
+                  child: RichText(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    text: TextSpan(
+                      children: [
+                        for (int i = 0;
+                            i < bookmodel.volumeInfo.authors!.length &&
+                                i < maxAuthorsToShow;
+                            i++)
+                          TextSpan(
+                            text: bookmodel.volumeInfo.authors![i] +
+                                (i < maxAuthorsToShow - 1 ? ', ' : ''),
+                            style: Styles.textStyle14,
+                          ),
+                        if (bookmodel.volumeInfo.authors!.length >
+                            maxAuthorsToShow)
+                          TextSpan(
+                            text: '...and more',
+                            style: Styles.textStyle14.copyWith(
+                              color: Colors.grey,
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
               const BookRating(

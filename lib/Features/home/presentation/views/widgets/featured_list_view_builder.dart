@@ -4,6 +4,7 @@ import 'package:bookly_app/core/widgets/custom_error_widget.dart';
 import 'package:bookly_app/core/widgets/custom_loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class FeaturedListViewBuilder extends StatelessWidget {
   const FeaturedListViewBuilder({super.key});
@@ -20,8 +21,15 @@ class FeaturedListViewBuilder extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.all(4.0),
-                child: FeaturedListViewItem(
-                  imageUrl: state.books[index].volumeInfo.imageLinks.thumbnail,
+                child: GestureDetector(
+                  onTap: () {
+                    GoRouter.of(context)
+                        .push("/BookDetailsView", extra: state.books[index]);
+                  },
+                  child: FeaturedListViewItem(
+                    imageUrl:
+                        state.books[index].volumeInfo.imageLinks.thumbnail,
+                  ),
                 ),
               ),
             ),
